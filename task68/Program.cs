@@ -2,23 +2,32 @@
 // Даны два неотрицательных числа m и n.
 
 
-int m = InputNumbers("Введите m: ");
-int n = InputNumbers("Введите n: ");
+Console.Write("Введите число M: ");
+int m = Convert.ToInt32(Console.ReadLine());
 
-int functionAkkerman = Ack(m, n);
+Console.Write("Введите число N: ");
+int n = Convert.ToInt32(Console.ReadLine());
 
-Console.Write($"Функция Аккермана = {functionAkkerman} ");
+AkkermanFunction(m,n);
 
-int Ack(int m, int n)
+
+void AkkermanFunction(int m, int n)
 {
-  if (m == 0) return n + 1;
-  else if (n == 0) return Ack(m - 1, 1);
-  else return Ack(m - 1, Ack(m, n - 1));
+    Console.Write(Akkerman(m, n)); 
 }
 
-int InputNumbers(string input) 
+int Akkerman(int m, int n)
 {
-  Console.Write(input);
-  int output = Convert.ToInt32(Console.ReadLine());
-  return output;
+    if (m == 0)
+    {
+        return n + 1;
+    }
+    else if (n == 0 && m > 0)
+    {
+        return Akkerman(m - 1, 1);
+    }
+    else
+    {
+        return (Akkerman(m - 1, Akkerman(m, n - 1)));
+    }
 }
